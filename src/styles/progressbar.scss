@@ -1,0 +1,23 @@
+@import '__vars';
+
+.parentdiv {
+  height: 12px;
+  width: 100%;
+  background: var(--border-light);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.childdiv {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+}
+
+.progresstext {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0;
+}

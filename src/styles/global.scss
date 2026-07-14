@@ -1,0 +1,38 @@
+@import '__vars';
+@import '_design-system';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Layaout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: var(--space-6);
+}
+
+.main-containerwelcome {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.ac-logotxt {
+  width: 35%;
+  margin-top: 3%;
+}
+
+/* Legacy support */
+.txt-welcome {
+  color: var(--text-primary);
+  font-weight: 500;
+}

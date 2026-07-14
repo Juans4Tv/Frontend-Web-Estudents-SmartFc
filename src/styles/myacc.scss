@@ -1,0 +1,264 @@
+@import '__vars';
+$mobile: 425px;
+$tablet: 768px;
+
+.myacc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-8);
+}
+
+.imac {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-8);
+}
+
+.mac-logotxt {
+  width: 280px;
+  height: auto;
+}
+
+.formacp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  width: 100%;
+  align-items: start;
+}
+
+.info-studentchange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-8);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+.ac-logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: var(--space-6);
+}
+
+.txt-infochange {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+}
+
+.lnamechange {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: var(--text-sm);
+  min-width: 60px;
+  text-align: right;
+}
+
+.namechange {
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.fomac {
+  width: 100%;
+}
+
+.form-acc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-8);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+.inp-actname,
+.inp-actlname,
+.inp-emailact,
+.inp-passact,
+.inp-cpassact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.nameact-lab,
+.lnameact-lab,
+.labelact,
+.labelcxact,
+.clabelcxact {
+  display: none;
+}
+
+.inp-actnametxt,
+.inp-actlnametxt,
+.inp-emailtxtact,
+.inp-passtxtact,
+.inp-cpasstxtact {
+  width: 100%;
+  height: 52px;
+  padding: 0 var(--space-4);
+  background: var(--bg-input);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.inp-actnametxt::placeholder,
+.inp-actlnametxt::placeholder,
+.inp-emailtxtact::placeholder,
+.inp-passtxtact::placeholder,
+.inp-cpasstxtact::placeholder {
+  color: var(--text-muted);
+}
+
+.inp-actnametxt:focus,
+.inp-actlnametxt:focus,
+.inp-emailtxtact:focus,
+.inp-passtxtact:focus,
+.inp-cpasstxtact:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
+  background: var(--bg-card);
+}
+
+.sh-gr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.inpact-sch {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.schact-lab {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.schact-ch {
+  width: 100%;
+  height: 52px;
+  padding: 0 var(--space-4);
+  padding-right: var(--space-10);
+  background: var(--bg-input);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  outline: none;
+  transition: all var(--transition-base);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.schact-ch:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
+  background: var(--bg-card);
+}
+
+.error-message {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--error);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.success-message {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--success);
+  text-align: center;
+  margin-top: var(--space-2);
+}
+
+.btnact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  height: 52px;
+  padding: 0 var(--space-6);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  color: var(--text-inverse);
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 14px rgba(47, 128, 237, 0.35);
+  margin-top: var(--space-2);
+}
+
+.btnact:hover:not(:disabled) {
+  background: var(--gradient-primary-hover);
+  box-shadow: 0 6px 20px rgba(47, 128, 237, 0.45);
+  transform: translateY(-2px);
+}
+
+.btnact:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+@media (max-width: $tablet) {
+  .formacp {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .myacc-container {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: $mobile) {
+  .sh-gr {
+    grid-template-columns: 1fr;
+  }
+  .form-acc {
+    padding: var(--space-6);
+  }
+  .mac-logotxt {
+    width: 200px;
+  }
+}

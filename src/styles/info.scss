@@ -1,0 +1,22 @@
+@import '__vars';
+
+.inf-d {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.inf-logo {
+  width: 32px;
+  height: 32px;
+  background: var(--primary-bg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  padding: var(--space-1);
+  transition: all var(--transition-fast);
+}
+
+.inf-logo:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}

@@ -1,0 +1,44 @@
+@import '__vars';
+$mobile: 425px;
+$tablet: 768px;
+
+.main-containercourses {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-6);
+
+  @media only screen and (max-width:$mobile) {
+    padding: var(--space-4);
+  }
+}
+
+.container-courses {
+  width: 100%;
+}
+
+.title-curses {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.matterList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  li {
+    margin-bottom: var(--space-4);
+  }
+}
+
+@media (max-width: $tablet) {
+  .main-containercourses {
+    padding: var(--space-4);
+  }
+}

@@ -1,0 +1,43 @@
+@import '__vars';
+
+.Nf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-12) var(--space-8);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+
+.logo1 {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  margin-bottom: var(--space-6);
+}
+
+.Nf-container h1 {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: var(--space-2);
+}
+
+.Nf-container h2 {
+  font-size: var(--text-2xl);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.Nf-container p {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  max-width: 360px;
+}
