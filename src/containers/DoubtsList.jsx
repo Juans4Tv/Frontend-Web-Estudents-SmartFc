@@ -4,7 +4,6 @@ import '../styles/global.scss';
 import '../styles/subjectlist.scss';
 import Infdoubts from '../modals/Infdoubts';
 import Doubtsinfo from '../components/Doubtsinfo';
-import Filters from './Filters';
 import Information from '../components/Information';
 import SearchDoub from '../components/SearchDoub';
 

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import hi from '../assets/logos/saludo.png';
 import '../styles/global.scss';
 import '../styles/modals.scss';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const ModalPlayQuizz = ({ open, onClose }) => {
     const navigate = useNavigate();

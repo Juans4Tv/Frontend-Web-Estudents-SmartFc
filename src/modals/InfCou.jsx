@@ -8,7 +8,7 @@ const InfCou = ({ open, onClose }) => {
         <div className='overlay'>
             <div className="modal-container">
                 <div className="mat-x">
-                    <h2 className="letter-modal"></h2>
+                    <h2 className="letter-modal">Información</h2>
                     <p onClick={onClose} className="close-btn">X</p>
                 </div>
                 <div className="lo-tex">

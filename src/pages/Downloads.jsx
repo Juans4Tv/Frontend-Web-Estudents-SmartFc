@@ -1,5 +1,4 @@
 import React from 'react'
-import DownloadInfo from '../components/DownloadInfo'
 import Header from '../components/Header'
 import DownloadLis from '../containers/DownloadLis'
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/doubtsinfo.scss';
 import ModalDoubt from '../modals/ModalDoubts';
 import question from '../assets/logos/qestion.png';
@@ -8,7 +8,7 @@ import { getBaseUrl } from '../config';
 export const Doubtsinfo = ({filter}) => {
     const [responsem, setresponsem] = useState('');
     const [responseq, setresponseq] = useState([]);
-    const [matter, setMatter] = useState('');
+    const [matter] = useState('');
     const [openModal, setOpenModal] = useState(false);
     const [idduda, setIdduda] = useState(0);
 
@@ -51,7 +51,7 @@ export const Doubtsinfo = ({filter}) => {
     }, [])
 
     const dataFilterDoub = () => {
-        if (filter == '') {
+        if (filter === '') {
             return(responseq)
         }
         else {

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Matterinfo from '../components/MatterInfo';
 import '../styles/matterlist.scss';
 import '../styles/global.scss';
-import Modal from '../modals/Modal';
-import Search from '../components/Search';
 import Information from '../components/Information';
 import InfCou from '../modals/InfCou';
 import SearchAcc from '../components/SearchAcc';

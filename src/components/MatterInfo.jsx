@@ -5,9 +5,8 @@ import axios from 'axios';
 import { getBaseUrl } from '../config';
 
 const Matterinfo = ({filter}) => {
-    const [matter, setMatter] = useState('');
+    const [matter] = useState('');
     const [responsem, setresponsem] = useState([]);
-    const [idact, setIdact] = useState(0);
     const [openModal, setOpenModal] = useState(false);
     const [error, setError] = useState(" ");
 
@@ -38,7 +37,7 @@ const Matterinfo = ({filter}) => {
     }, [])
     
     const dataFilterAcc = () => {
-        if(filter == ''){
+        if(filter === ''){
             return(responsem)
         }
         else{

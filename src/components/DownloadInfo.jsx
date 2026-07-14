@@ -5,7 +5,6 @@ import see from '../assets/logos/download.png';
 export const DownloadInfo = () => {
 
   
-  var commad = "../../public/documents";
 
   return (
     <div className='downloadInfo' onClick={() => "../../public/documents"}>

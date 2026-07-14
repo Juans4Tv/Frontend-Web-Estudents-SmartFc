@@ -18,23 +18,23 @@ const InfSubj = ({ open, onClose }) => {
                         Inicia tu proceso de aprendizaje en casa. <br />
                         Sigue el paso a paso de SMARTFC, en el lugar que se te indique:
                         <ul className='list-subj'>
-                            <li> <a className='subj-a'>En casa</a> (Antes de la clase).</li>
-                            <li><a className='subj-a'> En clase </a> (Durante la clase).</li>
+                            <li> <span className='subj-a'>En casa</span> (Antes de la clase).</li>
+                            <li><span className='subj-a'> En clase </span> (Durante la clase).</li>
                         </ul>
                         Sigue de forma secuencial estos momentos:
                         <ul className='type-ul'>
-                            <li><a className='subj-a' >MB2:</a> Observa detenidamente el contenido REA(vídeo),
+                            <li><span className='subj-a' >MB2:</span> Observa detenidamente el contenido REA(vídeo),
                                 las veces que quieras, si tienes dudas,
                                 pregúntale a tu profesor.
                             </li>
-                            <li><a className='subj-a'> MB3:</a> Aquí realizarás un quizz sobre el vídeo que acabas de ver.<br />
-                                <a className='note'>Recuerda realizarlo únicamente cuando estes seguro de haber entendido el vídeo.</a>
+                            <li><span className='subj-a'> MB3:</span> Aquí realizarás un quizz sobre el vídeo que acabas de ver.<br />
+                                <span className='note'>Recuerda realizarlo únicamente cuando estes seguro de haber entendido el vídeo.</span>
                             </li>
                             <li>
-                                <a className='subj-a'> En clase </a>, descarga el taller y presenta tu evaluación.
+                                <span className='subj-a'> En clase </span>, descarga el taller y presenta tu evaluación.
                             </li>
                         </ul>
-                        <a className='txr-subj'>¡Buena suerte!</a>
+                        <span className='txr-subj'>¡Buena suerte!</span>
                     </p>
                     <img src={see} alt="Informacion" className='solve' ></img>
                 </div>

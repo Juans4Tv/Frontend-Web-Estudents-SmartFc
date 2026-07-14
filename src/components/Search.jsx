@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/serach.scss';
-import lp from '../assets/logos/loupe.png';
 
 const Search = ({handleChange}) => {
   

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/subjectinfo.scss';
 import pruSubject from '../assets/logos/prusubject.png';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +33,7 @@ const SubjectInfo = ({filter}) => {
 
 
   const dataFilter = () => { 
-    if (filter == '') {
+    if (filter === '') {
       return(response)
     }
     else {

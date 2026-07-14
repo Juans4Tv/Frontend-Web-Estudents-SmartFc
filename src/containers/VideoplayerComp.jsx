@@ -29,7 +29,7 @@ const VideoplayerComp = () => {
                 ? (
                     <div>
                         <h2>Terminaste el vídeo</h2>
-                        <a>Ahora puedes relizar el quizz</a>
+                        <span>Ahora puedes relizar el quizz</span>
                         <BtnNavQuizz />
                         <BtnWatchVidAgain setvideoWatched={setvideoWatched} playerRef={playerRef} />
                     </div>

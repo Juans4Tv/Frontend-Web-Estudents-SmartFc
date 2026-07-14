@@ -6,14 +6,12 @@ import { getBaseUrl } from '../config';
 const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
     const [responsev, setresponsev] = useState([]);
 
-    const [videoWatch, setvideoWatch] = useState(false);
-
-    const [responsem, setresponsem] = useState([]);
+    const [, setvideoWatch] = useState(false);
 
 
-    const handleVideoWatch = (videoWatch) => {
+    const handleVideoWatch = () => {
         setvideoWatch(true);
-        if (videoWatch === true) {
+        if (true) {
                 const info_acivity = JSON.parse(localStorage.getItem("materia"));
                 const id_student = JSON.parse(localStorage.getItem("login"));
                 //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva

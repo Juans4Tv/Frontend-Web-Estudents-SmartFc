@@ -1,6 +1,4 @@
-import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Videoplayer from './Videoplayer';
+import React from 'react';
 
 
 const BtnWatchVidAgain = ({playerRef, setvideoWatched}) => {

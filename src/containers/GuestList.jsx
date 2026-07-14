@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import '../styles/matterlist.scss';
 import '../styles/global.scss'
-import ReaInfo from '../components/ReaInfo';
 import SearchREA from '../components/SearchREA';
 import GuestInfo from '../components/GuestInfo';
 
 export const GuestList = () => {
-	const[filterREA, setFilterREA] = useState('');
-    const [openModal, setOpenModal] = useState(false);
+    const[filterREA, setFilterREA] = useState('');
 	const handleChange = (e) => {setFilterREA(e.target.value)}
   return (
     <section className="main-container">

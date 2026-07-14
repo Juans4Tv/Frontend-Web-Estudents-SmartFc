@@ -13,17 +13,17 @@ const Welcomeinfo = () => {
              A continuación, realizaremos una breve descripción.
             <ul className='ul-welcome'>
                 <li>
-                    <a className='txt-welcome'>Mis cursos:</a> Encontrarás todos los cursos en los 
+                    <span className='txt-welcome'>Mis cursos:</span> Encontrarás todos los cursos en los 
                     que te encuentres matriculado, además, al darle click, aparecerán las actividades correspondientes al curso.
                 </li>
                 <li>
-                    <a className='txt-welcome'>Dudas: </a> En esta sección se encuentran las dudas (preguntas) que le hayas hecho a tu profesor, relacionadas con cada materia.
+                    <span className='txt-welcome'>Dudas: </span> En esta sección se encuentran las dudas (preguntas) que le hayas hecho a tu profesor, relacionadas con cada materia.
                 </li>
                 <li>
-                    <a className='txt-welcome'>REA: </a> En esta sección encontrarás el contenido REA disponible.
+                    <span className='txt-welcome'>REA: </span> En esta sección encontrarás el contenido REA disponible.
                 </li>
                 <li>
-                    <a className='txt-welcome'>Mi progreso: </a> Al dar click encontrarás el progreso de cada una de tus actividades realizadas.
+                    <span className='txt-welcome'>Mi progreso: </span> Al dar click encontrarás el progreso de cada una de tus actividades realizadas.
                 </li>
             </ul>
             <p className='p-welcome'>Si deseas más información, haz click aquí: <a href="/pdf/usermanual.pdf" target='_blank' download>Manual Usuario</a></p>

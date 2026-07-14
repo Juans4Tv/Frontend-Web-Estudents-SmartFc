@@ -142,7 +142,7 @@ const Testquestion = ({playTime}) => {
             }).catch((error) => {
             });
         }
-    }, [isFinisht, activityCompleted]);
+    }, [isFinisht, activityCompleted, puntuaciont, responsett?.questions?.length, selectedAnswers]);
 
      if (activityCompleted) {
         return (

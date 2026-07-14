@@ -3,7 +3,6 @@ import hi from '../assets/logos/saludo.png';
 import '../styles/global.scss';
 import '../styles/modals.scss';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const Modal = ({ open, onClose }) => {
     const navigate = useNavigate();
@@ -18,11 +17,11 @@ const Modal = ({ open, onClose }) => {
         //console.log(validateAnswer);
 
 
-        if (validateDocument == 1) {
+        if (validateDocument === 1) {
             setBtnHabTest(true);
         }
 
-        if (validateAnswer == 1) {
+        if (validateAnswer === 1) {
             setBtnHab(true);
         }
     }, []);

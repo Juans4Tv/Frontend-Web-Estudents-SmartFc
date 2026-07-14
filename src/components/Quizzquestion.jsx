@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/testquestion.scss';
-import preguntas from '../pages/Preguntas';
+
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { getBaseUrl } from '../config';
@@ -14,7 +14,6 @@ const Quizzquestion = ({playTimeq}) => {
     const [responset, setresponset] = useState(null);
     const [preguntasLength, setPreguntasLength] = useState([])
     const [respuestas, setRespuestas] = useState([]);
-    const [responsem, setresponsem] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -68,6 +67,7 @@ const Quizzquestion = ({playTimeq}) => {
             window.removeEventListener('beforeunload', handleBeforeUnload);
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [playTimeq])
 
     /*response.answers = [{

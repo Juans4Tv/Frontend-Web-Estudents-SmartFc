@@ -18,10 +18,7 @@ const MyaccInfo = () => {
     const [error, setError] = useState(" ");
     const [success, setSuccess] = useState(" ");
 
-    const handleLogoutacc = () => {
-        localStorage.clear()
-        window.location.reload()
-    }
+
 
     const [formAcc, setFormAcc] = useState({
         nameAcc: '',
@@ -69,7 +66,6 @@ const MyaccInfo = () => {
     useEffect(() => {
         const info_studiante = JSON.parse(localStorage.getItem("login"));
         if (!info_studiante.student) return
-        const id_studet = info_studiante.student.id_estudiante;
         const name_studet = info_studiante.student.nombre_estudiante;
         const lname_studet = info_studiante.student.apellido_estudiante;
         const grade_studet = info_studiante.student.grado_estudiante;
@@ -83,7 +79,6 @@ const MyaccInfo = () => {
         if (info_studiante) {
             setLname(lname_studet);
         };
-        console.log(name);
         if (info_studiante) {
             setGrade(grade_studet);
         };

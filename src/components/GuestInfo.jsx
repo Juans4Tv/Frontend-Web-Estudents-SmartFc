@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/matterinfo.scss';
-import Modal from '../modals/Modal';
+
 import axios from 'axios';
 import { getBaseUrl } from '../config';
 
 export const GuestInfo = ({filter}) => {
-  const [openModal, setOpenModal] = useState(false);
   const [responser, setresponser] = useState([]);
   const [errorGuest, setErrorGuest] = useState('');
 
@@ -26,7 +25,7 @@ export const GuestInfo = ({filter}) => {
   }, [])
 
   const datafilterREA = () => {
-    if(filter == ''){
+    if(filter === ''){
       return(responser)
     }
     else {
@@ -41,7 +40,7 @@ export const GuestInfo = ({filter}) => {
   return (
     <>
       {datafilterREA().map((rea, indexr) => (
-        <div className='matterInfo' key={indexr} onClick={() => setOpenModal(true)}>
+        <div className='matterInfo' key={indexr}>
           <h2>{rea.nombre_CREA}</h2>
           <p>{rea.id_grado} </p>
         </div>

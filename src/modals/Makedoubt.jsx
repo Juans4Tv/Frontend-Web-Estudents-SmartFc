@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getBaseUrl } from '../config';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import mquest from '../assets/logos/robotPregunta.png';
 import '../styles/global.scss';
 import '../styles/modalmake.scss';
@@ -12,7 +12,6 @@ const Makedoubt = ({ openM, onCloseM }) => {
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
     const [nextId, setNextId] = useState(null);
-    const form = useRef(null);
 
     useEffect(() => {
         if (!openM) return;

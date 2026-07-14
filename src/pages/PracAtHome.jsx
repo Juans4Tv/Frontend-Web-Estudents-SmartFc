@@ -11,8 +11,6 @@ import { getBaseUrl } from '../config';
 
 
 const PracAtHome = () => {
-    
-    const [responsem, setresponsem] = useState([]);
        
     useEffect(() => {
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
