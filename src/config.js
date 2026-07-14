@@ -3,7 +3,9 @@ const IPSERVER_KEY = 'IPSERVER';
 function getBaseUrl() {
   const ip = localStorage.getItem(IPSERVER_KEY);
   if (!ip) return null;
-  return `http://${ip}:3000`;
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  const port = ip.includes('.') && !ip.includes(':') ? ':3000' : '';
+  return `${protocol}//${ip}${port}`;
 }
 
 function setServerIP(ip) {
@@ -21,8 +23,10 @@ function clearServerIP() {
 async function testConnection(ip) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  const port = ip.includes('.') && !ip.includes(':') ? ':3000' : '';
   try {
-    const response = await fetch(`http://${ip}:3000/prueba`, {
+    const response = await fetch(`${protocol}//${ip}${port}/prueba`, {
       method: 'GET',
       signal: controller.signal,
     });
