@@ -209,7 +209,7 @@ const Register = () => {
     };
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const formDatar = new FormData(form.current);
@@ -221,31 +221,36 @@ const Register = () => {
             choseSchool: formDatar.get('choseSchool'),
             chosegrade: formDatar.get('chosegrade')
         }
-        //console.log(data);
 
-        fetch(`${getBaseUrl()}/createEstudiante`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                nombre_estudiante: data.nameReg,
-                apellido_estudiante: data.lnameReg,
-                correo_electronico: data.emailReg,
-                contrasena: data.passwordReg,
-                grado_estudiante: data.chosegrade,
-                id_colegio: data.choseSchool
-            })
-        }).then(async function (response) {
-            if (!response.ok) {
-                const errData = await response.json().catch(() => ({}));
+        try {
+            const allStudents = await fetch(`${getBaseUrl()}/loadAllStudent`).then(r => r.json());
+            const count = Array.isArray(allStudents) ? allStudents.length : 0;
+            const id_estudiante = parseInt('' + data.choseSchool + (count + 1), 10);
+
+            const res = await fetch(`${getBaseUrl()}/createEstudiante`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id_estudiante,
+                    tipo_usuario: 1,
+                    nombre_estudiante: data.nameReg,
+                    apellido_estudiante: data.lnameReg,
+                    grado_estudiante: data.chosegrade,
+                    curso_estudiante: 1,
+                    id_colegio: data.choseSchool,
+                    nombre_usuario: data.emailReg.toLowerCase(),
+                    contrasena: data.passwordReg.toLowerCase(),
+                    correo_electronico: data.emailReg.toLowerCase(),
+                })
+            });
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
                 throw new Error(errData.error || 'Error del servidor');
             }
             setSuccessR("Registro exitoso, ahora puedes iniciar sesion");
-            console.log('Registro exitoso');
-        }).catch(function (error) {
+        } catch (error) {
             setError(error.message);
-            console.log(error)
-        })
-
+        }
     };
     const btndisabled = () => {
         if (formReg.nameRError || formReg.lnameRError || formReg.emailRError || formReg.passRError || formReg.cpasswordRegError || formReg.checkedRegError || formReg.schoolRError || formReg.gradeRError) return (true);
@@ -287,8 +292,8 @@ const Register = () => {
                          onBlur={handleBlur} >
                             <option key="default-grade" value="">Seleccione</option>
                             {gradesReg.map((grade) => (
-                                <option key={grade.id} value={grade.id}>
-                                    {grade.id_grado}
+                                <option key={grade._id} value={grade.id_grado}>
+                                    {grade.nombre_grado}
                                 </option>
                             ))}
                         </select>
@@ -304,7 +309,7 @@ const Register = () => {
                         onBlur={handleBlur} >
                             <option key="default-school" value="">Seleccione</option>
                             {schoolReg.map((school) => (
-                                <option key={school.id} value={school.id_colegio}>
+                                <option key={school._id} value={school.id_colegio}>
                                     {school.nombre_colegio}
                                 </option>
                             ))}

@@ -8,30 +8,39 @@ import '../styles/modals.scss';
 
 
 const Workshop = () => {
+    console.log('[Workshop] Componente renderizado');
     const [responsew, setresponsew] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log('[Workshop] useEffect - leyendo materia');
         const info_materia = JSON.parse(localStorage.getItem("materia"));
-        if (!info_materia || !info_materia.urltaller) return
+        console.log('[Workshop] materia:', info_materia);
+        if (!info_materia || !info_materia.urltaller) {
+            console.log('[Workshop] No hay urltaller, retornando vacío');
+            return;
+        }
         const baseUrl = getBaseUrl();
         const urltaller = info_materia.urltaller;
+        console.log('[Workshop] urltaller original:', urltaller);
         const repoIndex = urltaller.indexOf('/repositorio');
+        let fullUrl;
         if (repoIndex !== -1) {
             const path = urltaller.substring(repoIndex);
-            setresponsew({ urltaller: baseUrl + path });
+            fullUrl = baseUrl + path;
         } else {
-            setresponsew({ urltaller: urltaller });
+            fullUrl = urltaller;
         }
+        console.log('[Workshop] urltaller final:', fullUrl);
+        setresponsew({ urltaller: fullUrl });
     }, [])
 
     useEffect(() => {
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
-        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
+        if (!info_acivity || !id_student) return;
          const id_acivity = info_acivity.id_actividad;
          const  id_students = id_student.student.id_estudiante
-         console.log(id_student);
         axios({
             method: 'post',
             url: `${getBaseUrl()}/createEventos`,
@@ -39,13 +48,11 @@ const Workshop = () => {
                 id_estudiante: id_students,
                 id_actividad: id_acivity,
                 paso: "4"
-                
             }
-            
         }).then((response) => {
-            console.log(response);
+            console.log('[Workshop] createEventos paso 4 ok:', response);
         }).catch((error) => {
-            console.log(error);
+            console.log('[Workshop] createEventos paso 4 error:', error);
         })
     }, [])
 

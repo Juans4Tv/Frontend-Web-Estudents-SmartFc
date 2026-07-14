@@ -1,10 +1,14 @@
 const IPSERVER_KEY = 'IPSERVER';
 
+function isIpAddress(value) {
+  return /^(\d{1,3}\.){3}\d{1,3}$/.test(value);
+}
+
 function getBaseUrl() {
   const ip = localStorage.getItem(IPSERVER_KEY);
   if (!ip) return null;
   const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
-  const port = ip.includes('.') && !ip.includes(':') ? ':3000' : '';
+  const port = isIpAddress(ip) ? ':3000' : '';
   return `${protocol}//${ip}${port}`;
 }
 
@@ -24,7 +28,7 @@ async function testConnection(ip) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
-  const port = ip.includes('.') && !ip.includes(':') ? ':3000' : '';
+  const port = isIpAddress(ip) ? ':3000' : '';
   try {
     const response = await fetch(`${protocol}//${ip}${port}/prueba`, {
       method: 'GET',
@@ -40,11 +44,11 @@ async function testConnection(ip) {
   } catch (error) {
     clearTimeout(timeout);
     if (error.name === 'AbortError') {
-      console.error(`[Config] Timeout al conectar con ${ip}:3000 (5s)`);
-      return { ok: false, message: `Tiempo de espera agotado. No se pudo alcanzar ${ip}:3000` };
+      console.error(`[Config] Timeout al conectar con ${ip}${port} (5s)`);
+      return { ok: false, message: `Tiempo de espera agotado. No se pudo alcanzar ${ip}${port}` };
     }
-    console.error(`[Config] Error de conexión con ${ip}:3000:`, error.message);
-    return { ok: false, message: `No se pudo conectar a ${ip}:3000 - ${error.message}` };
+    console.error(`[Config] Error de conexión con ${ip}${port}:`, error.message);
+    return { ok: false, message: `No se pudo conectar a ${ip}${port} - ${error.message}` };
   }
 }
 

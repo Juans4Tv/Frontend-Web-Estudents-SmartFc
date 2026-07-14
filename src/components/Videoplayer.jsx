@@ -41,12 +41,16 @@ const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
     };
 
     useEffect(() => {
+        console.log('[Videoplayer] useEffect - leyendo materia');
         const info_matter = JSON.parse(localStorage.getItem("materia"));
+        console.log('[Videoplayer] materia:', info_matter);
         if (!info_matter || !info_matter.urlvideo) {
+            console.log('[Videoplayer] No hay urlvideo, retornando vacío');
             return;
         }
         const baseUrl = getBaseUrl();
         const urlvideo = info_matter.urlvideo;
+        console.log('[Videoplayer] urlvideo original:', urlvideo);
         const repoIndex = urlvideo.indexOf('/repositorio');
         let fullUrl;
         if (repoIndex !== -1) {
@@ -55,6 +59,7 @@ const Videoplayer = ({ onVideoEnd, playerRef, videoWatched }) => {
         } else {
             fullUrl = urlvideo;
         }
+        console.log('[Videoplayer] urlvideo final:', fullUrl);
         setresponsev({ urlvideo: fullUrl });
     }, [])
 

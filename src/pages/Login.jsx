@@ -36,29 +36,32 @@ const Login = () => {
     };
 
     const handleTestIp = async () => {
+        let cleanIp = ipInput.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
         const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
-        if (!ipRegex.test(ipInput)) {
+        const hostnameRegex = /^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+        if (!ipRegex.test(cleanIp) && !hostnameRegex.test(cleanIp)) {
             setIpStatus('error');
-            setIpMessage('Formato de IP inválido. Ejemplo: 192.168.1.1');
-            console.error('[Login] Formo de IP inválido:', ipInput);
+            setIpMessage('Ingresá una IP (ej: 192.168.1.1) o un dominio (ej: api.tudominio.com)');
+            console.error('[Login] Formato inválido:', ipInput);
             return;
         }
+        setIpInput(cleanIp);
         setTestingIp(true);
         setIpStatus('testing');
         setIpMessage('Probando conexión...');
-        console.log(`[Login] Probando conexión con ${ipInput}:3000...`);
-        const result = await testConnection(ipInput);
+        console.log(`[Login] Probando conexión con ${cleanIp}...`);
+        const result = await testConnection(cleanIp);
         setTestingIp(false);
         if (result.ok) {
             setIpStatus('ok');
             setIpMessage('Conexión exitosa. IP guardada.');
-            setServerIP(ipInput);
+            setServerIP(cleanIp);
             setError(' ');
-            console.log(`[Login] IP ${ipInput} guardada correctamente.`);
+            console.log(`[Login] IP ${cleanIp} guardada correctamente.`);
         } else {
             setIpStatus('error');
             setIpMessage(result.message);
-            console.error(`[Login] Fallo al conectar con ${ipInput}:3000:`, result.message);
+            console.error(`[Login] Fallo al conectar con ${cleanIp}:`, result.message);
         }
     };
 

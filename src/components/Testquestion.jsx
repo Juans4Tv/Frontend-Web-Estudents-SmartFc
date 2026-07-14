@@ -17,10 +17,18 @@ const Testquestion = ({playTime}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!playTime) return;
+        if (!playTime) {
+            console.log('[Testquestion] playTime false, esperando...');
+            return;
+        }
+        console.log('[Testquestion] playTime true, iniciando carga');
         const info_questiont = JSON.parse(localStorage.getItem("materia"));
-        if (!info_questiont) return;
+        if (!info_questiont) {
+            console.log('[Testquestion] No hay materia en localStorage');
+            return;
+        }
         const id_tstudet = info_questiont.id_actividad;
+        console.log('[Testquestion] id_actividad:', id_tstudet);
         const handleBeforeUnload = (e) => {
             e.preventDefault();
             e.returnValue = '¿Seguro que quieres recargar la página?';
@@ -38,9 +46,12 @@ const Testquestion = ({playTime}) => {
                 paso: "9"
             }
         }).then((response) => {
+            console.log('[Testquestion] createEventos paso 9 response:', response.data);
             if (response.data && response.data.mensaje === 'La evaluación ya ha sido respondida.'){
+                console.log('[Testquestion] Evaluación ya respondida');
                 setActivityCompleted(true);
             } else{
+                console.log('[Testquestion] Cargando actividad...');
                 axios({
                     method: 'post',
                     url: `${getBaseUrl()}/loadActivity`,
@@ -48,11 +59,14 @@ const Testquestion = ({playTime}) => {
                         id_actividad: id_tstudet,
                     }
                 }).then(function (response) {
+                    console.log('[Testquestion] Actividad cargada:', response.data);
                     setResponsett(response.data.activity || response.data);
                 }).catch(function (error) {
+                    console.log('[Testquestion] Error cargando actividad:', error);
                 });
             }
         }).catch((error) => {
+            console.log('[Testquestion] Error en createEventos paso 9:', error);
         });
 
 

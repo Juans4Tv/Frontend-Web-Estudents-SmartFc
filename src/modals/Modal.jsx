@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import hi from '../assets/logos/saludo.png';
 import '../styles/global.scss';
 import '../styles/modals.scss';
@@ -6,25 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Modal = ({ open, onClose }) => {
     const navigate = useNavigate();
-    const [btnHab, setBtnHab] = useState(false);
-    const [btnHabTest, setBtnHabTest] = useState(false);
-    useEffect(() => {
-        
-        const info_lduda = JSON.parse(localStorage.getItem("materia"));
-        if (!info_lduda) return
-        const validateAnswer = info_lduda.evaluacion;
-        const validateDocument = info_lduda.taller;
-        //console.log(validateAnswer);
-
-
-        if (validateDocument === 1) {
-            setBtnHabTest(true);
-        }
-
-        if (validateAnswer === 1) {
-            setBtnHab(true);
-        }
-    }, []);
 
 
     if (!open) return null;
@@ -41,11 +22,8 @@ const Modal = ({ open, onClose }) => {
                 </div>
                 <div className="btn-div">
                     <button onClick={() => navigate("/Myactivity")} className='btn-modal'>Práctica en Casa</button>
-                    <button onClick={() => navigate("/classActy")}
-                        disabled={!btnHab}
-                        className='btn-modal'>Práctica en Clase</button>
-                    <button onClick={() => navigate("/test")}
-                        disabled={!btnHabTest} className='btn-modal'>Realiza tu Examen</button>
+                    <button onClick={() => navigate("/classActy")} className='btn-modal'>Práctica en Clase</button>
+                    <button onClick={() => navigate("/test")} className='btn-modal'>Realiza tu Examen</button>
                 </div>
             </div>
         </div>

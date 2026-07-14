@@ -17,11 +17,18 @@ const Quizzquestion = ({playTimeq}) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!playTimeq) return;
-        console.log('[Quizzquestion] playTimeq true, cargando datos...');
+        if (!playTimeq) {
+            console.log('[Quizzquestion] playTimeq false, esperando...');
+            return;
+        }
+        console.log('[Quizzquestion] playTimeq true, iniciando carga');
         const info_question = JSON.parse(localStorage.getItem("materia"));
-        if (!info_question) return;
+        if (!info_question) {
+            console.log('[Quizzquestion] No hay materia en localStorage');
+            return;
+        }
         const id_qstudet = info_question.id_actividad;
+        console.log('[Quizzquestion] id_actividad:', id_qstudet);
         const handleBeforeUnload = (e) => {
             e.preventDefault();
             e.returnValue = '¿Seguro que quieres recargar la página?';
@@ -35,11 +42,15 @@ const Quizzquestion = ({playTimeq}) => {
             }
 
         }).then(function (response) {
-            console.log('[Quizzquestion] preguntas cargadas:', response.data);
-            setresponset(response.data)
-            setRespuestas([response.data[0]['A' + acQuestion + '1'], response.data[0]['A' + acQuestion + '2'], response.data[0]['A' + acQuestion + '3'], response.data[0]['A' + acQuestion + '4']])
+            console.log('[Quizzquestion] Actividad cargada:', response.data);
+            const activityData = response.data.activity || response.data;
+            console.log('[Quizzquestion] activityData keys:', Object.keys(activityData));
+            setresponset(activityData)
+            const r1 = activityData['A' + acQuestion + '1'];
+            console.log('[Quizzquestion] respuestas A11...A14:', r1, activityData['A12'], activityData['A13'], activityData['A14']);
+            setRespuestas([r1, activityData['A' + acQuestion + '2'], activityData['A' + acQuestion + '3'], activityData['A' + acQuestion + '4']])
         }).catch(function (error) {
-            console.log('[Quizzquestion] error cargando preguntas:', error);
+            console.log('[Quizzquestion] Error cargando actividad:', error);
         })
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
@@ -194,52 +205,50 @@ const Quizzquestion = ({playTimeq}) => {
     //console.log(preguntasLength.length)
 
     return (
-        <>
-            {responset?.map((question, indext) => {
-                return (
-                    <div className='test-container' key={indext}>
-                        <div className='up-cont'>
-                            <div className='numero-pregunta'>
-                                <span>Pregunta {acQuestion}</span>
-                            </div>
-                            <div className='titulo-pregunta'>
-                                <h3>{question['Q' + acQuestion]}</h3>
-                            </div>
+        <div className='test-container'>
+            {responset ? (
+                <>
+                    <div className='up-cont'>
+                        <div className='numero-pregunta'>
+                            <span>Pregunta {acQuestion}</span>
                         </div>
-                        <div className='down-cont'>
-                            {respuestas.map((respuesta) => (
-                                <button
-                                    disabled={areDisable}
-                                    key={respuesta.textoRespuesta}
-                                    onClick={(e) => handleAnswSubmit(respuestas.indexOf(respuesta), e)
-                                    }>
-                                    {respuesta}
-                                </button>
-                            ))}
-                            <div>
-                                {!areDisable ? (
-                                    <span className='rest-time'>Tiempo restante: {restTime} </span>
-                                ) : (
-                                    <div className='dt'>
-                                        <p className='txt-t'>Se ha terminado tu tiempo, por favor da click en continuar.</p>
-                                        <button className='ctn-btn'
-                                            onClick={(e) => {
-                                                setrestTime(10);
-                                                setareDisable(false);
-                                                handleAnswSubmit(false, e)
-                                            }}>
-                                            Continuar
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-
+                        <div className='titulo-pregunta'>
+                            <h3>{responset['Q' + acQuestion]}</h3>
                         </div>
                     </div>
-
-                )
-            })}
-        </>
+                    <div className='down-cont'>
+                        {respuestas.map((respuesta, i) => (
+                            <button
+                                disabled={areDisable}
+                                key={i}
+                                onClick={(e) => handleAnswSubmit(respuestas.indexOf(respuesta), e)
+                                }>
+                                {respuesta}
+                            </button>
+                        ))}
+                        <div>
+                            {!areDisable ? (
+                                <span className='rest-time'>Tiempo restante: {restTime} </span>
+                            ) : (
+                                <div className='dt'>
+                                    <p className='txt-t'>Se ha terminado tu tiempo, por favor da click en continuar.</p>
+                                    <button className='ctn-btn'
+                                        onClick={(e) => {
+                                            setrestTime(10);
+                                            setareDisable(false);
+                                            handleAnswSubmit(false, e)
+                                        }}>
+                                        Continuar
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <p>Cargando preguntas...</p>
+            )}
+        </div>
     )
 }
 

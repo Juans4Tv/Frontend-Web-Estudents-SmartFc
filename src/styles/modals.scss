@@ -160,6 +160,23 @@ $tablet: 768px;
   transform: translateY(-2px);
 }
 
+.btn-modal:disabled,
+.btn-modalqt:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-modal:disabled:hover,
+.btn-modalqt:disabled:hover {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background: var(--gradient-primary);
+}
+
 .questionh {
   width: 48px;
   height: 48px;

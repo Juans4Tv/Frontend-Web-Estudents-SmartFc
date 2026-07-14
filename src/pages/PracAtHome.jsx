@@ -9,16 +9,25 @@ import Information from '../components/Information';
 import VideoplayerComp from '../containers/VideoplayerComp';
 import { getBaseUrl } from '../config';
 
-
 const PracAtHome = () => {
-       
+    console.log('[PracAtHome] Componente renderizado');
+
     useEffect(() => {
+        console.log('[PracAtHome] useEffect - inicio');
         const info_acivity = JSON.parse(localStorage.getItem("materia"));
         const id_student = JSON.parse(localStorage.getItem("login"));
-        //console.log(info_matter);  const id_materia = info_matter.id_materiaActiva
-         const id_acivity = info_acivity.id_actividad;
-         const  id_students = id_student.student.id_estudiante
-        
+        console.log('[PracAtHome] materia:', info_acivity);
+        console.log('[PracAtHome] login:', id_student);
+
+        if (!info_acivity || !id_student) {
+            console.log('[PracAtHome] Falta materia o login en localStorage');
+            return;
+        }
+
+        const id_acivity = info_acivity.id_actividad;
+        const id_students = id_student.student.id_estudiante
+        console.log('[PracAtHome] id_actividad:', id_acivity, 'id_estudiante:', id_students);
+
         fetch(`${getBaseUrl()}/createEventos`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -28,9 +37,9 @@ const PracAtHome = () => {
                 paso:"8"
             })
         }).then((response) => {
-            console.log(response);
+            console.log('[PracAtHome] createEventos ok:', response);
         }).catch((error) => {
-            console.log(error);
+            console.log('[PracAtHome] createEventos error:', error);
         })
     }, [])
    /*  useEffect(() => {
