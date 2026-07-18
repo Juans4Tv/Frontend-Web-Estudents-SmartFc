@@ -256,7 +256,7 @@ const AcercaDe = () => {
           </p>
           <div className="collaborators-list">
             <span className="collaborator-badge">Lilibeth Andrea Anacona Jimenez</span>
-            <span className="collaborator-badge">Juan miguel cedeño</span>
+            <span className="collaborator-badge">Juan Miguel Cedeño Solano </span>
            
           </div>
         </div>
