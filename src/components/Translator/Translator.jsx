@@ -72,6 +72,7 @@ export default function Translator() {
       const s = document.getElementById(styleId);
       if (s) s.remove();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNavigate = (id) => {
