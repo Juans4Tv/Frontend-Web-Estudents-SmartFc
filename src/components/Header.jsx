@@ -11,6 +11,7 @@ const Header = () => {
         window.location.reload()
     }
     const [isOpen, setIsOpen] = useState(false);
+    const hasRunaSubject = localStorage.getItem('hasRunaSubject') === 'true';
 
     return (
         <nav>
@@ -19,7 +20,7 @@ const Header = () => {
 
                     <li>
                         <a className='x-short' href='/'>
-                            <img src={logo} alt="logo" className="logo" href="/mySubjects" />
+                            <img src={logo} alt="logo" className="logo" />
                         </a>
                     </li>
                     <li>
@@ -37,6 +38,11 @@ const Header = () => {
                     <li>
                         <a className='med' href="/activitys">Mi progreso</a>
                     </li>
+                    {hasRunaSubject &&
+                        <li>
+                            <a className='med' href="/translator">Traductor</a>
+                        </li>
+                    }
                     <li className="dplast">
                         <div className="dropdown">
                             <button onClick={() => setIsActive(!isActive)} className='dropbtn'>Perfil
@@ -59,7 +65,7 @@ const Header = () => {
                     {isOpen === true && <ul className='list-mobile-menu' >
                         <li>
                             <a className='x-short' href='/'>
-                                <img src={logo} alt="logo" className="logo" href="/mySubjects" />
+                                <img src={logo} alt="logo" className="logo" />
                             </a>
                         </li>
                         <li>
@@ -77,6 +83,11 @@ const Header = () => {
                         <li>
                             <a className='med' href="/activitys">Actividades</a>
                         </li>
+                        {hasRunaSubject &&
+                            <li>
+                                <a className='med' href="/translator">Traductor</a>
+                            </li>
+                        }
                         <li>
                             <a className='e-large' href="/myAcount">Modificar Perfil</a>
                         </li>

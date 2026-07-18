@@ -26,6 +26,10 @@ const SubjectInfo = ({filter}) => {
       }
     }).then(function (response) {
       setresponse(response.data)
+      const hasRuna = response.data.some(s =>
+        s.nombre_materiaActiva?.toLowerCase().includes('runa')
+      );
+      localStorage.setItem('hasRunaSubject', hasRuna);
     }).catch(function (error) {
       setError(error.response.data.message);
     })

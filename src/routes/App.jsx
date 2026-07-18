@@ -19,9 +19,7 @@ import PraAtQuizz from '../pages/PraAtQuizz';
 import PracAtSch from '../pages/PracAtSch';
 import PracAtTest from '../pages/PracAtTest';
 import PracAtHomeRea from '../pages/PracAtHomeRea';
-
-
-
+import Translator from '../components/Translator/Translator';
 
 const App = () => {
 
@@ -60,6 +58,7 @@ const App = () => {
             <Route exact path='/rea' element ={ <Rea/>} />
             <Route exact path='/register' element ={ <Register/>} />
             <Route exact path="/" element = { <Home/>}/>
+            <Route exact path="/translator" element = {<Translator/>} />
             <Route path="*" element = {<NotFound/> } />
         </Routes>
         }
